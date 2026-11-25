@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import "./Appointments.css";
@@ -23,7 +22,7 @@ const Appointments = () => {
   const role = localStorage.getItem("role");
 
   // Get all registered doctors
-  const fetchDoctors = async () => {
+  const fetchDoctors = useCallback(async () => {
     try {
       const response = await axios.get(
         `${API_URL}/api/doctors`,
@@ -35,18 +34,24 @@ const Appointments = () => {
       );
 
       const data = response.data;
-      setDoctors(Array.isArray(data) ? data : data.doctors || data.data || []);
+
+      setDoctors(
+        Array.isArray(data)
+          ? data
+          : data.doctors || data.data || []
+      );
     } catch (error) {
       console.error("Doctor fetching error:", error);
+
       setError(
         error.response?.data?.message ||
-        "Unable to load doctors. Please check the doctor API."
+          "Unable to load doctors. Please check the doctor API."
       );
     }
-  };
+  }, [token]);
 
   // Get user's appointments
-  const fetchAppointments = async () => {
+  const fetchAppointments = useCallback(async () => {
     try {
       const response = await axios.get(
         `${API_URL}/api/appointments/my`,
@@ -58,14 +63,18 @@ const Appointments = () => {
       );
 
       const data = response.data;
+
       setAppointments(
-        Array.isArray(data) ? data : data.appointments || data.data || []
+        Array.isArray(data)
+          ? data
+          : data.appointments || data.data || []
       );
     } catch (error) {
       console.error("Appointments fetching error:", error);
     }
-  };
+  }, [token]);
 
+  // Load doctors and appointments
   useEffect(() => {
     const loadData = async () => {
       if (!token || role !== "user") {
@@ -74,12 +83,20 @@ const Appointments = () => {
         return;
       }
 
-      await Promise.all([fetchDoctors(), fetchAppointments()]);
-      setLoading(false);
+      setLoading(true);
+
+      try {
+        await Promise.all([
+          fetchDoctors(),
+          fetchAppointments(),
+        ]);
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadData();
-  }, []);
+  }, [token, role, fetchDoctors, fetchAppointments]);
 
   // Book appointment
   const handleBooking = async (e) => {
@@ -116,9 +133,10 @@ const Appointments = () => {
       await fetchAppointments();
     } catch (error) {
       console.error("Booking error:", error);
+
       alert(
         error.response?.data?.message ||
-        "Unable to book appointment. Please try again."
+          "Unable to book appointment. Please try again."
       );
     } finally {
       setBooking(false);
@@ -127,7 +145,11 @@ const Appointments = () => {
 
   // Cancel pending appointment
   const handleCancel = async (id) => {
-    if (!window.confirm("Are you sure you want to cancel this appointment?")) {
+    if (
+      !window.confirm(
+        "Are you sure you want to cancel this appointment?"
+      )
+    ) {
       return;
     }
 
@@ -142,16 +164,19 @@ const Appointments = () => {
       );
 
       alert("Appointment cancelled successfully.");
+
       await fetchAppointments();
     } catch (error) {
       console.error("Cancel error:", error);
+
       alert(
         error.response?.data?.message ||
-        "Unable to cancel appointment."
+          "Unable to cancel appointment."
       );
     }
   };
 
+  // Format appointment date
   const formatDate = (date) => {
     if (!date) return "Not available";
 
@@ -177,17 +202,21 @@ const Appointments = () => {
       <Navbar />
 
       <div className="appointments-page">
-
         <div className="appointment-header">
           <h1>Appointments</h1>
           <p>Find your doctor and book an appointment easily.</p>
         </div>
 
-        {error && <div className="appointment-error">{error}</div>}
+        {error && (
+          <div className="appointment-error">
+            {error}
+          </div>
+        )}
 
         {/* DOCTOR LIST */}
         <section className="doctor-list-section">
           <h2>Available Doctors</h2>
+
           <p className="section-description">
             Select a doctor to book your appointment.
           </p>
@@ -196,10 +225,8 @@ const Appointments = () => {
             <p className="empty-message">No doctors found.</p>
           ) : (
             <div className="doctor-cards">
-
               {doctors.map((doctor) => (
                 <div className="doctor-card" key={doctor._id}>
-
                   <div className="doctor-avatar">
                     {doctor.profileImage ? (
                       <img
@@ -238,10 +265,8 @@ const Appointments = () => {
                       Book Appointment
                     </button>
                   </div>
-
                 </div>
               ))}
-
             </div>
           )}
         </section>
@@ -250,28 +275,35 @@ const Appointments = () => {
         {selectedDoctor && (
           <section className="booking-form-section">
             <div className="booking-form-card">
-
               <h2>Book Appointment</h2>
 
               <p>
-                Selected Doctor: <strong>{selectedDoctor.name}</strong>
+                Selected Doctor:{" "}
+                <strong>{selectedDoctor.name}</strong>
               </p>
 
               <p>
-                Doctor ID: <strong>{selectedDoctor._id}</strong>
+                Doctor ID:{" "}
+                <strong>{selectedDoctor._id}</strong>
               </p>
 
               <form onSubmit={handleBooking}>
-
                 <label>Appointment Date and Time</label>
 
                 <input
                   type="datetime-local"
                   value={appointmentDate}
-                  min={new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-                    .toISOString()
-                    .slice(0, 16)}
-                  onChange={(e) => setAppointmentDate(e.target.value)}
+                  min={
+                    new Date(
+                      Date.now() -
+                        new Date().getTimezoneOffset() * 60000
+                    )
+                      .toISOString()
+                      .slice(0, 16)
+                  }
+                  onChange={(e) =>
+                    setAppointmentDate(e.target.value)
+                  }
                   required
                 />
 
@@ -280,7 +312,9 @@ const Appointments = () => {
                 <textarea
                   placeholder="Describe your reason for booking..."
                   value={reason}
-                  onChange={(e) => setReason(e.target.value)}
+                  onChange={(e) =>
+                    setReason(e.target.value)
+                  }
                   rows="4"
                   required
                 />
@@ -291,7 +325,9 @@ const Appointments = () => {
                     className="confirm-booking-btn"
                     disabled={booking}
                   >
-                    {booking ? "Sending Request..." : "Confirm Booking"}
+                    {booking
+                      ? "Sending Request..."
+                      : "Confirm Booking"}
                   </button>
 
                   <button
@@ -302,7 +338,6 @@ const Appointments = () => {
                     Cancel
                   </button>
                 </div>
-
               </form>
             </div>
           </section>
@@ -311,6 +346,7 @@ const Appointments = () => {
         {/* MY APPOINTMENTS */}
         <section className="my-appointments-section">
           <h2>My Appointments</h2>
+
           <p className="section-description">
             Track your appointment requests and their status.
           </p>
@@ -321,13 +357,11 @@ const Appointments = () => {
             </p>
           ) : (
             <div className="my-appointment-cards">
-
               {appointments.map((appointment) => (
                 <div
                   className="my-appointment-card"
                   key={appointment._id}
                 >
-
                   <h3>
                     Dr. {appointment.doctor?.name || "Doctor"}
                   </h3>
@@ -362,19 +396,18 @@ const Appointments = () => {
                   {appointment.status === "pending" && (
                     <button
                       className="cancel-appointment-btn"
-                      onClick={() => handleCancel(appointment._id)}
+                      onClick={() =>
+                        handleCancel(appointment._id)
+                      }
                     >
                       Cancel Request
                     </button>
                   )}
-
                 </div>
               ))}
-
             </div>
           )}
         </section>
-
       </div>
     </>
   );
