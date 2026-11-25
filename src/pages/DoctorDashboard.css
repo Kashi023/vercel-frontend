@@ -1,0 +1,199 @@
+
+/* Doctor appointment statistics */
+.doctor-appointment-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin: 30px 0;
+}
+
+.doctor-stat-card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.doctor-stat-card h2 {
+  color: #087e8b;
+  font-size: 28px;
+  margin: 0 0 8px;
+}
+
+.doctor-stat-card p {
+  color: #64748b;
+  margin: 0;
+}
+
+/* Appointment request section */
+.doctor-requests-section {
+  background: #ffffff;
+  padding: 25px;
+  margin: 30px 0;
+  border-radius: 14px;
+}
+
+.doctor-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.doctor-section-heading h2 {
+  color: #17365d;
+  margin-bottom: 7px;
+}
+
+.doctor-section-heading p {
+  color: #64748b;
+}
+
+.doctor-refresh-btn {
+  background: #17365d;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.doctor-error {
+  padding: 13px;
+  color: #991b1b;
+  background: #fee2e2;
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+
+.doctor-no-appointments {
+  text-align: center;
+  padding: 45px 15px;
+  color: #64748b;
+}
+
+.empty-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.doctor-appointment-list {
+  display: grid;
+  gap: 18px;
+}
+
+.doctor-appointment-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.doctor-appointment-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.doctor-appointment-header h3 {
+  color: #17365d;
+  margin: 0 0 6px;
+}
+
+.doctor-appointment-header p {
+  color: #64748b;
+  margin: 0;
+}
+
+.doctor-appointment-details p {
+  color: #475569;
+  margin: 10px 0;
+}
+
+.doctor-status {
+  padding: 7px 12px;
+  border-radius: 20px;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-weight: 600;
+  height: fit-content;
+}
+
+.doctor-status.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.doctor-status.accepted {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.doctor-status.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.doctor-status.completed {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.doctor-action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.doctor-accept-btn,
+.doctor-reject-btn,
+.doctor-complete-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.doctor-accept-btn {
+  background: #16a34a;
+}
+
+.doctor-reject-btn {
+  background: #dc2626;
+}
+
+.doctor-complete-btn {
+  background: #2563eb;
+  margin-top: 15px;
+}
+
+.doctor-accept-btn:disabled,
+.doctor-reject-btn:disabled,
+.doctor-complete-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .doctor-appointment-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .doctor-appointment-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-section-heading,
+  .doctor-appointment-header {
+    flex-direction: column;
+  }
+
+  .doctor-action-buttons {
+    flex-direction: column;
+  }
+}

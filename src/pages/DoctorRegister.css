@@ -1,0 +1,121 @@
+
+.doctor-register-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 15px;
+  background: linear-gradient(135deg, #e8f3ff, #e6fffa);
+}
+
+.doctor-register-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 35px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-register-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.doctor-register-header h1 {
+  color: #0879dc;
+  margin-bottom: 12px;
+}
+
+.doctor-register-header h2 {
+  color: #172b4d;
+}
+
+.doctor-register-header p {
+  color: #718096;
+}
+
+.doctor-register-card h3 {
+  color: #0879dc;
+  font-size: 17px;
+  margin: 25px 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5edf5;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 7px;
+  color: #344054;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #d5deea;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+  color: #263449;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #0879dc;
+  box-shadow: 0 0 0 3px rgba(8, 121, 220, 0.1);
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.doctor-register-card button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #0879dc, #08a99b);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.doctor-register-card button:hover {
+  opacity: 0.9;
+}
+
+.doctor-register-card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.doctor-login-link {
+  text-align: center;
+  margin-top: 22px;
+  color: #64748b;
+}
+
+.doctor-login-link a {
+  color: #0879dc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .doctor-register-card {
+    padding: 22px 17px;
+  }
+}

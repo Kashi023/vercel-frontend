@@ -1,0 +1,380 @@
+
+/* ==============================
+   SYMPTOM CHECKER - MAIN LAYOUT
+================================ */
+
+.symptom-page {
+  min-height: calc(100vh - 70px);
+  padding: 55px 24px 70px;
+  background: linear-gradient(180deg, #eff6ff 0%, #f8fafc 45%, #ffffff 100%);
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: #0f172a;
+}
+
+.symptom-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ==============================
+   PAGE HEADING
+================================ */
+
+.symptom-container > h1 {
+  margin: 0 0 14px;
+  color: #0f172a;
+  text-align: center;
+  font-size: clamp(32px, 5vw, 44px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  max-width: 620px;
+  margin: 0 auto 38px;
+  color: #64748b;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* ==============================
+   SYMPTOM SELECTION CARD
+================================ */
+
+.symptom-card {
+  padding: 34px;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.055);
+}
+
+.symptom-card h2,
+.results-section > h2 {
+  margin: 0 0 8px;
+  color: #0f172a;
+  font-size: 23px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.symptom-card h2::after {
+  content: "";
+  display: block;
+  width: 45px;
+  height: 4px;
+  margin-top: 13px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #2563eb, #0d9488);
+}
+
+/* ==============================
+   SYMPTOM OPTIONS
+================================ */
+
+.symptom-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+  margin: 28px 0 30px;
+}
+
+.symptom-option {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  padding: 15px 13px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.symptom-option:hover {
+  border-color: #93c5fd;
+  background: #f8fbff;
+  transform: translateY(-2px);
+}
+
+.symptom-option:has(input:checked) {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.07);
+}
+
+.symptom-option input {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.symptom-option input:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 3px;
+}
+
+/* ==============================
+   CHECK SYMPTOMS BUTTON
+================================ */
+
+/* ==============================
+   ANALYZE WITH ML BUTTON
+================================ */
+
+.check-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 52px;
+  padding: 15px 22px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(110deg, #2563eb, #0d9488);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  box-shadow: 0 7px 18px rgba(37, 99, 235, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.check-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 11px 25px rgba(37, 99, 235, 0.25);
+}
+
+.check-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.check-button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 4px;
+}
+
+.check-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ==============================
+   RESULTS SECTION
+================================ */
+
+.results-section {
+  margin-top: 38px;
+}
+
+.results-section > h2 {
+  margin-bottom: 22px;
+}
+
+.result-card {
+  padding: 25px;
+  margin-bottom: 17px;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #0d9488;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.035);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.07);
+}
+
+.result-card h3 {
+  margin: 0 0 16px;
+  color: #0f766e;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.result-card p {
+  margin: 10px 0 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.result-card strong {
+  color: #334155;
+  font-weight: 700;
+}
+
+/* ==============================
+   ERROR & EMPTY STATES
+================================ */
+
+.error-message {
+  padding: 13px 15px;
+  margin-top: 18px;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.no-results {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #64748b;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ==============================
+   MEDICAL DISCLAIMER
+================================ */
+
+.medical-disclaimer {
+  padding: 18px 20px;
+  margin-top: 30px;
+  border: 1px solid #dbeafe;
+  border-radius: 13px;
+  background: #eff6ff;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.medical-disclaimer::before {
+  content: "ⓘ  ";
+  color: #2563eb;
+  font-weight: 700;
+}
+
+/* ==============================
+   TABLET RESPONSIVENESS
+================================ */
+
+@media (max-width: 768px) {
+  .symptom-page {
+    padding: 40px 20px 55px;
+  }
+
+  .symptom-card {
+    padding: 26px;
+  }
+
+  .symptom-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+
+  .symptom-option {
+    padding: 13px 11px;
+    font-size: 13px;
+  }
+}
+
+/* ==============================
+   MOBILE RESPONSIVENESS
+================================ */
+
+@media (max-width: 480px) {
+  .symptom-page {
+    padding: 32px 15px 45px;
+  }
+
+  .symptom-container > h1 {
+    font-size: 32px;
+    letter-spacing: -1px;
+  }
+
+  .subtitle {
+    margin-bottom: 27px;
+    font-size: 14px;
+  }
+
+  .symptom-card {
+    padding: 21px 17px;
+    border-radius: 17px;
+  }
+
+  .symptom-card h2,
+  .results-section > h2 {
+    font-size: 20px;
+  }
+
+  .symptom-list {
+    gap: 9px;
+    margin: 23px 0;
+  }
+
+  .symptom-option {
+    gap: 8px;
+    padding: 12px 9px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+
+  .symptom-option input {
+    flex-basis: 14px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .check-button {
+    min-height: 49px;
+    font-size: 14px;
+  }
+
+  .result-card {
+    padding: 20px 17px;
+  }
+
+  .result-card h3 {
+    font-size: 17px;
+  }
+
+  .medical-disclaimer {
+    padding: 15px;
+    font-size: 12px;
+  }
+}
+
+/* ==============================
+   REDUCED MOTION
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .symptom-option,
+  .check-button,
+  .result-card {
+    transition: none;
+  }
+
+  .symptom-option:hover,
+  .check-button:hover,
+  .result-card:hover {
+    transform: none;
+  }
+}

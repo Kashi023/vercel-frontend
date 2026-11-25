@@ -1,0 +1,554 @@
+
+/* =========================
+   GLOBAL DASHBOARD
+========================= */
+
+.dashboard {
+  min-height: calc(100vh - 70px);
+  padding-bottom: 70px;
+  background: linear-gradient(180deg, #f0f7ff 0%, #f8fafc 45%, #ffffff 100%);
+  color: #0f172a;
+  overflow: hidden;
+}
+
+.dashboard * {
+  box-sizing: border-box;
+}
+
+/* =========================
+   WELCOME / HERO SECTION
+========================= */
+
+.welcome-section {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 85px 30px 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 65px;
+}
+
+.welcome-section > div:first-child {
+  flex: 1;
+}
+
+.small-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 15px;
+  margin-bottom: 22px;
+  color: #1d4ed8;
+  background: #dbeafe;
+  border: 1px solid #bfdbfe;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+}
+
+.hero-title,
+.welcome-section h1 {
+  font-size: clamp(38px, 4.5vw, 58px);
+  line-height: 1.13;
+  letter-spacing: -2px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 24px;
+}
+
+.welcome-section h1 span {
+  color: #2563eb;
+}
+
+.health-text {
+  background: linear-gradient(110deg, #2563eb 10%, #0891b2 55%, #0d9488 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ai-text {
+  background: linear-gradient(110deg, #6366f1, #0891b2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcome-text {
+  max-width: 590px;
+  margin: 0 0 32px;
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+/* Primary Button */
+
+.check-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 25px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(120deg, #2563eb, #0d9488);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.check-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 13px 28px rgba(37, 99, 235, 0.27);
+}
+
+/* =========================
+   AI FEATURE CARD
+========================= */
+
+.ai-card {
+  position: relative;
+  flex: 0 0 345px;
+  width: 345px;
+  padding: 34px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #dbeafe;
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(30, 64, 175, 0.10);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ai-card::before {
+  content: "";
+  position: absolute;
+  top: -75px;
+  right: -75px;
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dbeafe, #ccfbf1);
+  opacity: 0.8;
+}
+
+.ai-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 65px rgba(30, 64, 175, 0.15);
+}
+
+.ai-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #dbeafe, #ccfbf1);
+  color: #2563eb;
+  font-size: 30px;
+}
+
+.ai-card h2 {
+  position: relative;
+  margin: 25px 0 12px;
+  color: #0f172a;
+  font-size: 23px;
+  letter-spacing: -0.5px;
+}
+
+.ai-card p {
+  position: relative;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.online {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  color: #15803d;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.online span {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 9px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 4px #dcfce7;
+}
+
+/* =========================
+   QUICK SERVICES
+========================= */
+
+.quick-section {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 25px 30px 35px;
+}
+
+.section-heading {
+  margin-bottom: 30px;
+}
+
+.section-heading h2 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: 30px;
+  letter-spacing: -1px;
+  font-weight: 800;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.health-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 26px 23px;
+  border: 1px solid #e2e8f0;
+  border-radius: 19px;
+  background: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.025);
+  transition: transform 0.25s ease, border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.health-card:hover {
+  transform: translateY(-6px);
+  border-color: #bfdbfe;
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.09);
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 22px;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #eff6ff, #ecfeff);
+  color: #2563eb;
+  font-size: 27px;
+  transition: transform 0.25s ease;
+}
+
+.health-card:hover .card-icon {
+  transform: scale(1.07);
+}
+
+.health-card h3 {
+  margin: 0 0 11px;
+  color: #1e293b;
+  font-size: 17px;
+  font-weight: 750;
+}
+
+.health-card p {
+  flex-grow: 1;
+  margin: 0 0 20px;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.health-card > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+/* =========================
+   BOTTOM SECTION
+========================= */
+
+.bottom-section {
+  max-width: 1240px;
+  margin: 35px auto 0;
+  padding: 0 30px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(260px, 1fr);
+  gap: 25px;
+}
+
+.activity-card,
+.tip-card {
+  min-width: 0;
+  padding: 27px;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.025);
+}
+
+.card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card-heading h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 20px;
+  letter-spacing: -0.4px;
+}
+
+.card-heading a {
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.card-heading a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* Activity Items */
+
+.activity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 19px 0;
+  border-top: 1px solid #f1f5f9;
+}
+
+.activity-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 21px;
+}
+
+.activity h4 {
+  margin: 0 0 6px;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.activity p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================
+   HEALTH TIP
+========================= */
+
+.tip-card {
+  background: linear-gradient(145deg, #eff6ff 0%, #ecfeff 100%);
+  border-color: #dbeafe;
+}
+
+.tip-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  font-size: 28px;
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.07);
+}
+
+.tip-card h2 {
+  margin: 0 0 12px;
+  color: #1e3a8a;
+  font-size: 21px;
+  letter-spacing: -0.5px;
+}
+
+.tip-card p {
+  margin: 0;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+.check-btn:focus-visible,
+.health-card:focus-visible,
+.card-heading a:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .check-btn,
+  .ai-card,
+  .health-card,
+  .card-icon {
+    transition: none;
+  }
+
+  .check-btn:hover,
+  .ai-card:hover,
+  .health-card:hover {
+    transform: none;
+  }
+}
+
+/* =========================
+   RESPONSIVE TABLETS
+========================= */
+
+@media (max-width: 1050px) {
+  .welcome-section {
+    gap: 35px;
+    padding-top: 65px;
+  }
+
+  .ai-card {
+    flex-basis: 310px;
+    width: 310px;
+    padding: 28px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bottom-section {
+    grid-template-columns: minmax(0, 1.5fr) minmax(230px, 1fr);
+  }
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .welcome-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 35px;
+    padding: 48px 22px 40px;
+  }
+
+  .hero-title,
+  .welcome-section h1 {
+    font-size: clamp(36px, 9vw, 46px);
+    letter-spacing: -1.4px;
+  }
+
+  .welcome-text {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .ai-card {
+    flex: auto;
+    width: 100%;
+    padding: 27px;
+  }
+
+  .quick-section {
+    padding: 25px 22px;
+  }
+
+  .section-heading h2 {
+    font-size: 26px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .health-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .health-card p {
+    min-height: 0;
+  }
+
+  .bottom-section {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 20px;
+    padding: 0 22px;
+  }
+
+  .activity-card,
+  .tip-card {
+    padding: 22px;
+  }
+}
+
+/* Small phones */
+
+@media (max-width: 400px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-section {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .quick-section {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .bottom-section {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .check-btn {
+    width: 100%;
+  }
+}
